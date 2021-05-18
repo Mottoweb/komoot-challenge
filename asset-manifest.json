@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/komoot-challenge/static/css/main.f6b57760.chunk.css",
+    "main.js": "/komoot-challenge/static/js/main.4c18748f.chunk.js",
+    "main.js.map": "/komoot-challenge/static/js/main.4c18748f.chunk.js.map",
+    "runtime-main.js": "/komoot-challenge/static/js/runtime-main.3905d7ef.js",
+    "runtime-main.js.map": "/komoot-challenge/static/js/runtime-main.3905d7ef.js.map",
+    "static/css/2.c1e28d34.chunk.css": "/komoot-challenge/static/css/2.c1e28d34.chunk.css",
+    "static/js/2.6b6f4326.chunk.js": "/komoot-challenge/static/js/2.6b6f4326.chunk.js",
+    "static/js/2.6b6f4326.chunk.js.map": "/komoot-challenge/static/js/2.6b6f4326.chunk.js.map",
+    "static/js/3.860e1f13.chunk.js": "/komoot-challenge/static/js/3.860e1f13.chunk.js",
+    "static/js/3.860e1f13.chunk.js.map": "/komoot-challenge/static/js/3.860e1f13.chunk.js.map",
+    "index.html": "/komoot-challenge/index.html",
+    "static/css/2.c1e28d34.chunk.css.map": "/komoot-challenge/static/css/2.c1e28d34.chunk.css.map",
+    "static/css/main.f6b57760.chunk.css.map": "/komoot-challenge/static/css/main.f6b57760.chunk.css.map",
+    "static/js/2.6b6f4326.chunk.js.LICENSE.txt": "/komoot-challenge/static/js/2.6b6f4326.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3905d7ef.js",
+    "static/css/2.c1e28d34.chunk.css",
+    "static/js/2.6b6f4326.chunk.js",
+    "static/css/main.f6b57760.chunk.css",
+    "static/js/main.4c18748f.chunk.js"
+  ]
+}
