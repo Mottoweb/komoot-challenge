@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { WaypointsContextProvider } from './context/WaypointsContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <WaypointsContextProvider>
+      <App />
+    </WaypointsContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

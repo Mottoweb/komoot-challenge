@@ -1,50 +1,37 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, SVGOverlay, Polyline, useMapEvents } from 'react-leaflet';
-
-const NumberMarker = ({ position, index }) => {
-  const boundScale = 0.055;
-  const bounds = [{ lat: position.lat - boundScale, lng: position.lng - boundScale}, { lat: position.lat + boundScale, lng: position.lng + boundScale}]
-  return ( 
-    <SVGOverlay bounds={bounds}>
-      <circle r="10" cx="10" cy="10" fill="grey" />
-      <text textAnchor="middle" x="50%" y="50%" stroke="white">
-        {index+1}
-      </text>
-    </SVGOverlay>
-  )
-}
+import React from 'react';
+import { MapContainer, TileLayer, Polyline, useMapEvents } from 'react-leaflet';
+import { useWaypointsContext } from '../../context/WaypointsContext';
+import CircleMarker from './CircleMarker';
 
 const Markers = () => {
-  const [waypoints, setWaypoints] = useState([]);
-  const lineOptions = { color: 'black' }
+  const { waypoints, setWaypoints } = useWaypointsContext();
+  const lineOptions = { color: 'dodgerBlue' };
+
+  // get the highest number in current waypoints array or length
+  const currentNumber = waypoints.length === 0 ? waypoints.length : Math.max.apply(null, waypoints.map(item => item.number));
   useMapEvents({
     click(e) {
-      setWaypoints([...waypoints, e.latlng]);
+      setWaypoints([...waypoints, { number: currentNumber + 1, position: e.latlng}]);
     },
   })
   return (
     <>
-      <Polyline pathOptions={lineOptions} positions={waypoints} />
-      {waypoints.map((position, index) => <NumberMarker key={position} index={index} position={position} />)}
+      <Polyline pathOptions={lineOptions} positions={waypoints.map(each => each.position)} />
+      {waypoints.map(({ position, number }) => (<CircleMarker key={`marker-${number}`} position={position} index={number} />))}
     </>
   )
 }
 
-const defaultLatLng = [48.865572, 2.283523];
-const zoom = 8;
-
 const LeafletMap = () => {
-   return (
-     <MapContainer id="mapId"
-        center={defaultLatLng}
-        zoom={zoom}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors">
-          </TileLayer>
-          <Markers />
-     </MapContainer>
-   )
+  return (
+    <MapContainer id="mapId" center={[45.832672, 6.865223]} zoom={8} >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors">
+      </TileLayer>
+      <Markers />
+    </MapContainer>
+  )
 }
 
 export default LeafletMap;
